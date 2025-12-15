@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohan Nayak | Cinematic Video Editor</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="image.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        display: ['Syncopate', 'sans-serif'],
+                    },
+                    colors: {
+                        accent: '#8b5cf6',
+                        gold: '#FFD700',
+                        dark: '#030014',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center text-white mix-blend-difference">
+        <div class="text-xl font-display font-bold tracking-widest cursor-pointer hover:text-accent transition" onclick="goToSection('home')">RN</div>
+        
+        <div class="hidden md:flex gap-8 text-sm font-bold tracking-widest uppercase">
+            <button class="nav-btn hover:text-accent transition duration-300" onclick="goToSection('home')">Home</button>
+            <button class="nav-btn hover:text-accent transition duration-300" onclick="goToSection('projects')">Projects</button>
+            <button class="nav-btn hover:text-accent transition duration-300" onclick="goToSection('services')">Services</button>
+            <button class="nav-btn hover:text-accent transition duration-300" onclick="goToSection('pricing')">Pricing</button>
+            <button class="nav-btn hover:text-accent transition duration-300" onclick="goToSection('location')">Location</button>
+            <button class="nav-btn hover:text-accent transition duration-300" onclick="goToSection('contact')">Contact</button>
+        </div>
+    </nav>
+
+    <section id="home" class="section active items-center text-center">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="v1.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+
+        <div class="relative z-10">
+            <div class="text-accent text-xs font-bold tracking-[0.4em] mb-8 animate-pulse uppercase">Freelance Video Editor</div>
+            <div id="dancing-name" class="dancing-wrapper mb-10"></div>
+            <p class="text-gray-300 max-w-lg mx-auto text-lg leading-relaxed mb-12 drop-shadow-lg font-light">
+                A Passionate<span class="text-white font-bold"> Freelance Video Editor</span> I help brands, creators, and businesses transform raw footage into engaging, high-quality videos.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="From KlickPin CF I will do documentary video editing in a dynamic and creative way nel 2025.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay" style="background: rgba(0,0,0,0.9);"></div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10 h-full overflow-y-auto py-20 px-4 scrollbar-hide">
+            <h2 class="text-5xl font-display font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+                <div class="glass-panel p-4 rounded-2xl group hover:border-accent transition duration-500 cursor-pointer transform hover:-translate-y-2" onclick="openProjectVideo(0)">
+                    <div class="h-48 bg-black/50 rounded-xl overflow-hidden relative mb-4 border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition duration-300"><i class="fas fa-play text-white ml-1"></i></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Tech Video</h3>
+                        <p class="text-accent text-[10px] font-bold tracking-widest uppercase">Gadget Review</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl group hover:border-accent transition duration-500 cursor-pointer transform hover:-translate-y-2" onclick="openProjectVideo(1)">
+                    <div class="h-48 bg-black/50 rounded-xl overflow-hidden relative mb-4 border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition duration-300"><i class="fas fa-play text-white ml-1"></i></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Documentary Video</h3>
+                        <p class="text-accent text-[10px] font-bold tracking-widest uppercase">Storytelling</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl group hover:border-accent transition duration-500 cursor-pointer transform hover:-translate-y-2" onclick="openProjectVideo(2)">
+                    <div class="h-48 bg-black/50 rounded-xl overflow-hidden relative mb-4 border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition duration-300"><i class="fas fa-play text-white ml-1"></i></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">YouTube Video Editing</h3>
+                        <p class="text-accent text-[10px] font-bold tracking-widest uppercase">Vlog / Lifestyle</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl group hover:border-accent transition duration-500 cursor-pointer transform hover:-translate-y-2" onclick="openProjectVideo(3)">
+                    <div class="h-48 bg-black/50 rounded-xl overflow-hidden relative mb-4 border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition duration-300"><i class="fas fa-play text-white ml-1"></i></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Cinematic Editing</h3>
+                        <p class="text-accent text-[10px] font-bold tracking-widest uppercase">Travel / B-Roll</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl group hover:border-accent transition duration-500 cursor-pointer transform hover:-translate-y-2" onclick="openProjectVideo(4)">
+                    <div class="h-48 bg-black/50 rounded-xl overflow-hidden relative mb-4 border border-white/10">
+                        <img src="im4.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition duration-300"><i class="fas fa-play text-white ml-1"></i></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Social Media Videos</h3>
+                        <p class="text-accent text-[10px] font-bold tracking-widest uppercase">Reels / Shorts</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl group hover:border-accent transition duration-500 cursor-pointer transform hover:-translate-y-2" onclick="openProjectVideo(5)">
+                    <div class="h-48 bg-black/50 rounded-xl overflow-hidden relative mb-4 border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition duration-300"><i class="fas fa-play text-white ml-1"></i></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Color Grading</h3>
+                        <p class="text-accent text-[10px] font-bold tracking-widest uppercase">Cinematic Look</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="project-video-overlay" class="fixed inset-0 z-50 bg-black/95 flex items-center justify-center hidden opacity-0 transition-opacity duration-500">
+            <div class="relative w-full max-w-5xl px-4">
+                <button onclick="closeProjectVideo()" class="absolute -top-12 right-4 text-white hover:text-accent text-lg flex items-center gap-2">CLOSE <i class="fas fa-times"></i></button>
+                <div class="aspect-video w-full bg-black rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                    <video id="main-project-player" controls class="w-full h-full object-cover"><source src="" type="video/mp4"></video>
+                </div>
+                <div class="mt-6 text-center">
+                    <h3 id="overlay-title" class="text-3xl font-display font-bold">Project Title</h3>
+                    <p id="overlay-desc" class="text-accent text-sm tracking-widest uppercase mt-2">Category</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section" style="background: #030014;">
+        <div class="w-full max-w-6xl mx-auto flex flex-col h-full justify-center relative z-10">
+            <div id="services-list-view" class="w-full transition-all duration-500">
+                <div class="text-right mb-16 border-b border-white/10 pb-8">
+                    <h2 class="text-5xl md:text-8xl font-display font-bold text-white uppercase leading-none tracking-tighter">Post<br>Production</h2>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <div class="service-row py-8 flex justify-between items-center group" onclick="openServiceDetail(0)">
+                        <div class="text-2xl md:text-4xl font-bold text-gray-400 group-hover:text-white transition">01. Video Editing</div>
+                        <i class="fas fa-arrow-up-right text-accent text-2xl arrow-icon opacity-50 group-hover:opacity-100"></i>
+                    </div>
+                    <div class="service-row py-8 flex justify-between items-center group" onclick="openServiceDetail(1)">
+                        <div class="text-2xl md:text-4xl font-bold text-gray-400 group-hover:text-white transition">02. Motion Graphics</div>
+                        <i class="fas fa-arrow-up-right text-accent text-2xl arrow-icon opacity-50 group-hover:opacity-100"></i>
+                    </div>
+                    <div class="service-row py-8 flex justify-between items-center group" onclick="openServiceDetail(2)">
+                        <div class="text-2xl md:text-4xl font-bold text-gray-400 group-hover:text-white transition">03. Color Grading</div>
+                        <i class="fas fa-arrow-up-right text-accent text-2xl arrow-icon opacity-50 group-hover:opacity-100"></i>
+                    </div>
+                    <div class="service-row py-8 flex justify-between items-center group" onclick="openServiceDetail(3)">
+                        <div class="text-2xl md:text-4xl font-bold text-gray-400 group-hover:text-white transition">04. Sound Design</div>
+                        <i class="fas fa-arrow-up-right text-accent text-2xl arrow-icon opacity-50 group-hover:opacity-100"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="service-detail-view" class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 translate-x-20 transition-all duration-500 hidden">
+                <div class="w-full h-full bg-black/95 absolute inset-0 z-0" onclick="closeServiceDetail()"></div>
+                <div class="relative z-10 max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center pointer-events-auto px-4">
+                    <div class="order-2 md:order-1">
+                        <button onclick="closeServiceDetail()" class="text-accent text-xs font-bold tracking-widest mb-8 flex items-center gap-2 hover:text-white transition"><i class="fas fa-arrow-left"></i> BACK</button>
+                        <h2 id="detail-title" class="text-5xl font-bold mb-6 font-display text-white">Video Editing</h2>
+                        <p id="detail-desc" class="text-gray-400 text-lg leading-relaxed mb-8">Description...</p>
+                        <ul id="detail-features" class="space-y-4 mb-8 text-gray-300"></ul>
+                        
+                        <button onclick="openCallingOverlay()" class="bg-white text-black px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition shadow-lg hover:shadow-purple-500/50">Book Service</button>
+                    </div>
+                    <div class="order-1 md:order-2 h-[400px] border border-white/10 rounded-2xl overflow-hidden relative">
+                        <img id="detail-img" src="" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section" style="background: #030014;">
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+            <h2 class="text-5xl font-display font-bold mb-16 text-center">Packages & <span class="text-accent">Pricing</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="pricing-card glass-panel p-8 rounded-3xl flex flex-col relative overflow-hidden">
+                    <div class="text-gray-400 text-xs font-bold tracking-widest uppercase mb-4">Short Form</div>
+                    <h3 class="text-3xl font-bold mb-2">Reels/Shorts</h3>
+                    <div class="text-4xl font-display font-bold text-accent mb-6">$30<span class="text-lg text-gray-500 font-sans font-normal">/video</span></div>
+                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">High-retention editing for TikTok, IG Reels, and YT Shorts.</p>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-sm text-gray-300"><i class="fas fa-check text-green-400"></i> Up to 60 Seconds</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300"><i class="fas fa-check text-green-400"></i> Dynamic Captions</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300"><i class="fas fa-check text-green-400"></i> Emojis & B-Roll</li>
+                    </ul>
+                    <button onclick="goToSection('contact')" class="w-full border border-white/20 py-3 rounded-full font-bold text-sm uppercase hover:bg-white hover:text-black transition">CHOOSE BASIC</button>
+                </div>
+                <div class="pricing-card glass-panel p-8 rounded-3xl flex flex-col relative overflow-hidden bg-white/5">
+                    <div class="text-accent text-xs font-bold tracking-widest uppercase mb-4">Long Form</div>
+                    <h3 class="text-3xl font-bold mb-2">YouTube Video</h3>
+                    <div class="text-4xl font-display font-bold text-white mb-6">$20<span class="text-lg text-gray-500 font-sans font-normal">/minute</span></div>
+                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">Perfect for talking heads, tech reviews, vlogs, and tutorials.</p>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-sm text-white"><i class="fas fa-check text-accent"></i> Narrative Pacing</li>
+                        <li class="flex items-center gap-3 text-sm text-white"><i class="fas fa-check text-accent"></i> Sound Design & Mixing</li>
+                        <li class="flex items-center gap-3 text-sm text-white"><i class="fas fa-check text-accent"></i> Motion Graphics</li>
+                    </ul>
+                    <button onclick="goToSection('contact')" class="w-full border border-white/20 py-3 rounded-full font-bold text-sm uppercase hover:bg-white hover:text-black transition shadow-[0_0_0px_rgba(139,92,246,0.4)]">GET STARTED</button>
+                </div>
+                <div class="pricing-card glass-panel p-8 rounded-3xl flex flex-col relative overflow-hidden">
+                    <div class="text-gray-400 text-xs font-bold tracking-widest uppercase mb-4">Premium</div>
+                    <h3 class="text-3xl font-bold mb-2">Documentary</h3>
+                    <div class="text-4xl font-display font-bold text-accent mb-6 uppercase">Custom</div>
+                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">High-end production for complex documentaries or commercials.</p>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-sm text-gray-300"><i class="fas fa-check text-green-400"></i> Advanced Color Grading</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300"><i class="fas fa-check text-green-400"></i> Custom VFX & Animation</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300"><i class="fas fa-check text-green-400"></i> Cinema Quality</li>
+                    </ul>
+                    <button onclick="goToSection('contact')" class="w-full border border-white/20 py-3 rounded-full font-bold text-sm uppercase hover:bg-white hover:text-black transition">CONTACT ME</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="section relative w-full h-screen overflow-hidden">
+        <div class="absolute inset-0 z-0">
+             <video id="bg-flag" autoplay muted loop playsinline class="w-full h-full object-cover transition-opacity duration-1000 opacity-100">
+                 <source src="back1.mp4" type="video/mp4">
+             </video>
+             
+             <div id="map-container" class="absolute inset-0 w-full h-full flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-700 bg-black">
+                 <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" id="zoom-map" class="w-full h-full object-cover grayscale opacity-60">
+             </div>
+             
+             <div class="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-[#030014]"></div>
+             <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+    
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center">
+            <div class="text-accent text-sm font-bold tracking-[0.5em] mb-4 uppercase animate-pulse">Global Reach</div>
+            <h2 class="text-6xl md:text-9xl font-display font-bold mb-6">
+                BASED IN <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">INDIA.</span>
+            </h2>
+            
+            <div id="location-badge" class="mt-4 flex items-center gap-3 border border-white/20 bg-black/40 px-6 py-2 rounded-full backdrop-blur-md cursor-pointer hover:bg-black/60 transition group" onclick="playMapZoomAnimation()">
+                <span class="relative flex h-3 w-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                </span>
+                <span class="text-xs font-bold tracking-widest text-white group-hover:text-accent transition">ODISHA, INDIA</span>
+                <i class="fas fa-search-plus text-white text-xs opacity-0 group-hover:opacity-100 transition"></i>
+            </div>
+        </div>
+    
+        <div class="absolute bottom-12 w-full z-20">
+            <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-6">
+                <div class="glass-panel px-8 py-4 rounded-full flex items-center gap-4 hover:border-accent transition hover:-translate-y-1 duration-300">
+                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-accent"><i class="fas fa-clock text-lg"></i></div>
+                    <div class="text-left">
+                        <div class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">IST (India)</div>
+                        <div id="ist-clock" class="font-bold text-sm text-white font-mono">00:00:00</div>
+                    </div>
+                </div>
+                <div class="glass-panel px-8 py-4 rounded-full flex items-center gap-4 hover:border-accent transition hover:-translate-y-1 duration-300">
+                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-green-400"><i class="fas fa-wifi text-lg"></i></div>
+                    <div class="text-left">
+                        <div class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Remote Ready</div>
+                        <div class="font-bold text-sm text-white">100% Online Workflow</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="background: #050505;">
+        <div class="max-w-5xl mx-auto w-full relative z-10 px-4">
+             <div class="text-center mb-12">
+                <h2 class="text-4xl font-display font-bold text-white mb-2">Get in Touch</h2>
+                <p class="text-gray-400 text-sm">Feel free to reach out, I'll get back to you soon.</p>
+             </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-[#111] border border-gray-800 p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-accent font-bold text-xl mb-4">Let's Connect</h3>
+                        <p class="text-gray-400 text-sm mb-8">Ready to start your project? Reach out through any of these channels.</p>
+                        <!-- <div class="bg-[#1a1a1a] p-4 rounded-xl flex items-center gap-4 mb-8 border border-gray-800 hover:border-accent transition cursor-pointer group">
+                            <div class="w-10 h-10 bg-green-900/20 rounded-lg flex items-center justify-center text-green-500 group-hover:bg-green-500 group-hover:text-white transition"><i class="fab fa-whatsapp text-xl"></i></div>
+                            <div><div class="text-white font-bold text-sm">WhatsApp</div>
+                            <div class="text-gray-500 text-xs">+91 7978222633</div></div>
+                        </div> -->
+                         <a href="https://wa.me/917978222633" class="bg-[#1a1a1a] p-3 rounded-xl flex items-center gap-4 border border-gray-800 hover:border-accent transition cursor-pointer group">
+                                <div class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 group-hover:text-white transition"><i class="fab fa-whatsapp text-xl"></i></div>
+                                <div><div class="text-white font-bold text-sm">WhatsApp</div><div class="text-gray-500 text-xs">+91 7978222633</div></div>
+                            </a>
+
+
+                        <div class="text-white font-bold text-sm mb-4">Follow Me</div>
+                        <div class="space-y-3">
+                            <a href="#" class="bg-[#1a1a1a] p-3 rounded-xl flex items-center gap-4 border border-gray-800 hover:border-accent transition cursor-pointer group">
+                                <div class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 group-hover:text-white transition"><i class="fab fa-instagram"></i></div>
+                                <div><div class="text-white font-bold text-sm">Instagram</div><div class="text-gray-500 text-[10px]">Follow my journey</div></div>
+                            </a>
+                            <a href="https://www.linkedin.com/in/rohan-nayak-38a505278?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="bg-[#1a1a1a] p-3 rounded-xl flex items-center gap-4 border border-gray-800 hover:border-accent transition cursor-pointer group">
+                                <div class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 group-hover:text-white transition"><i class="fab fa-linkedin-in"></i></div>
+                                <div><div class="text-white font-bold text-sm">LinkedIn</div><div class="text-gray-500 text-[10px]">Professional network</div></div>
+                            </a>
+                            <a href="#" class="bg-[#1a1a1a] p-3 rounded-xl flex items-center gap-4 border border-gray-800 hover:border-accent transition cursor-pointer group">
+                                <div class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 group-hover:text-white transition"><i class="fab fa-youtube"></i></div>
+                                <div><div class="text-white font-bold text-sm">YouTube</div><div class="text-gray-500 text-[10px]">Watch my content</div></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#111] border border-gray-800 p-8 rounded-2xl">
+                    <h3 class="text-accent font-bold text-xl mb-6">Send a Message</h3>
+                    <form class="space-y-4"
+                    action="https://formspree.io/f/mqarozld"
+                      method="POST"
+                    >
+                        <div><label class="block text-xs text-gray-400 mb-1 ml-1">Name</label><input type="text" name="Name" class="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-accent transition text-sm"></div>
+                        <div><label class="block text-xs text-gray-400 mb-1 ml-1">Email</label><input type="email" name="example.com" class="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-accent transition text-sm"></div>
+                        <div><label class="block text-xs text-gray-400 mb-1 ml-1">Message</label><textarea rows="4" name="Tell me about your project..." class="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-accent transition text-sm"></textarea></div>
+                        <button type="submit" class="w-full bg-accent hover:bg-white text-black font-bold py-3 rounded-lg transition-all duration-300">Send Message</button>
+                    </form>
+                </div>
+             </div>
+        </div>
+    </section>
+
+    <div id="calling-overlay" class="fixed inset-0 z-[60] hidden flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-xl transition duration-500" onclick="closeCallingOverlay()"></div>
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="relative mb-8">
+                <div class="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
+                <div class="w-40 h-40 bg-gray-900 rounded-full border-4 border-green-500 overflow-hidden relative z-10">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80" alt="Boy Pic" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <h2 class="text-3xl font-bold text-white mb-2 tracking-widest">Rohan Nayak</h2>
+            <p class="text-green-400 animate-pulse mb-6 tracking-widest text-sm">CALLING...</p>
+            <div class="text-2xl font-mono text-white mb-8">+91 7978222633</div>
+            
+            <div class="flex justify-center">
+                <a href="https://wa.me/917978222633" target="_blank" class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center text-white hover:bg-green-700 transition transform hover:scale-110 shadow-[0_0_30px_rgba(34,197,94,0.6)] animate-bounce">
+                    <i class="fas fa-phone text-3xl"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
